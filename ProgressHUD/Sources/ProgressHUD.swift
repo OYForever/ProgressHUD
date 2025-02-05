@@ -552,12 +552,9 @@ extension ProgressHUD {
 
 	private func displayHUD() {
 		if (alpha == 0) {
-			alpha = 1
-			toolbarHUD?.alpha = 0
-			toolbarHUD?.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
-
+            toolbarHUD?.alpha = 0
 			UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction, .curveEaseIn], animations: { [self] in
-				toolbarHUD?.transform = CGAffineTransform(scaleX: 1/1.4, y: 1/1.4)
+                alpha = 1
 				toolbarHUD?.alpha = 1
 			}, completion: nil)
 		}
@@ -566,7 +563,6 @@ extension ProgressHUD {
 	func dismissHUD() {
 		if (alpha == 1) {
 			UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction, .curveEaseIn], animations: { [self] in
-				toolbarHUD?.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
 				toolbarHUD?.alpha = 0
 			}, completion: { [self] _ in
 				destroyHUD()
